@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>AI 自走車控制台</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <h1>AI 自走車控制台 <small>第 4 組 · 張庭茂 / 洪奕群</small></h1>
+    <div class="pills">
+      <span id="pill-conn" class="pill bad">連線中…</span>
+      <span id="pill-hw" class="pill">硬體 --</span>
+      <span id="pill-rec" class="pill" hidden>● REC 0s</span>
+      <span id="clock" class="pill mono">--:--:--</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="videos">
+      <figure class="vid">
+        <figcaption>原始畫面 <span id="cap-raw" class="mono">-- fps</span></figcaption>
+        <img src="/video/raw" alt="原始畫面">
+      </figure>
+      <figure class="vid">
+        <figcaption>YOLOv8 物件辨識 <span id="cap-yolo" class="mono">-- fps</span></figcaption>
+        <img src="/video/yolo" alt="YOLO 辨識">
+      </figure>
+      <figure class="vid">
+        <figcaption>車道偵測 <span id="cap-lane" class="mono">-- fps</span></figcaption>
+        <img src="/video/lane" alt="車道偵測">
+      </figure>
+    </section>
+
+    <section class="controls">
+      <div class="panel">
+        <h2>方向搖桿 <small>也可用 W A S D / 方向鍵，放開即停</small></h2>
+        <div id="joy" class="joy" aria-label="方向搖桿">
+          <span class="joy-label up">前進</span>
+          <span class="joy-label down">後退</span>
+          <span class="joy-label left">左轉</span>
+          <span class="joy-label right">右轉</span>
+          <div id="knob" class="knob"></div>
+        </div>
+        <button id="btn-stop" class="btn danger wide">停止（空白鍵）</button>
+      </div>
+
+      <div class="panel">
+        <h2>速度與鏡頭</h2>
+        <label class="row" for="speed">速度 <output id="speed-val" class="mono">40</output></label>
+        <input id="speed" type="range" min="10" max="100" step="5" value="40">
+
+        <div class="cam-pad">
+          <span></span><button class="btn" data-cam="up">▲</button><span></span>
+          <button class="btn" data-cam="left">◀</button>
+          <button class="btn" data-cam="center">⌂</button>
+          <button class="btn" data-cam="right">▶</button>
+          <span></span><button class="btn" data-cam="down">▼</button><span></span>
+        </div>
+        <p class="muted mono" id="cam-angle">上下 -- ° · 左右 -- °</p>
+
+        <button id="btn-rec" class="btn wide">開始錄影</button>
+        <p class="muted" id="rec-path"></p>
+      </div>
+
+      <div class="panel status">
+        <h2>車況與視訊狀態</h2>
+        <dl>
+          <dt>動作</dt><dd id="st-action" class="big">--</dd>
+          <dt>車道</dt><dd id="st-lane">--</dd>
+          <dt>CTE</dt><dd id="st-cte" class="mono">--</dd>
+          <dt>YOLO</dt><dd id="st-yolo">--</dd>
+          <dt>相機</dt><dd id="st-cam" class="mono">--</dd>
+          <dt>CPU 溫度</dt><dd id="st-temp" class="mono">--</dd>
+        </dl>
+        <h3>辨識到的物件</h3>
+        <ul id="objects" class="objects"><li class="muted">尚無</li></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

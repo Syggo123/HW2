@@ -1,0 +1,11 @@
+# 先裝 CPU 版 torch（避免 ultralytics 拉進幾百 MB 的 NVIDIA 套件把 SD 卡塞爆）：
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu --no-cache-dir
+# 再裝這些：
+#   pip install -r requirements.txt --no-cache-dir
+Flask
+ultralytics
+adafruit-circuitpython-pca9685
+gpiozero
+smbus2
+pytest          # 單元測試（電腦上跑就好）
+# 電腦端分析圖表：pip install pandas matplotlib

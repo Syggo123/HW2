@@ -1,0 +1,12 @@
+timestamp_ms,run_id,event,detail
+1792565626995,R20261021_145345_bench,start,--port=5000 --speed=25 --no_flip=False --lane_mode=tophat --no_yolo=False --no_lane=False --only_raw=False --no_log=False --tag=bench
+1792565861156,R20261021_145345_bench,watchdog_stop,gap=640ms
+1792565864685,R20261021_145345_bench,watchdog_stop,gap=683ms
+1792565868219,R20261021_145345_bench,watchdog_stop,gap=689ms
+1792565871751,R20261021_145345_bench,watchdog_stop,gap=682ms
+1792565875283,R20261021_145345_bench,watchdog_stop,gap=684ms
+1792565878823,R20261021_145345_bench,watchdog_stop,gap=694ms
+1792565882254,R20261021_145345_bench,watchdog_stop,gap=603ms
+1792565885794,R20261021_145345_bench,watchdog_stop,gap=698ms
+1792565889323,R20261021_145345_bench,watchdog_stop,gap=689ms
+1792565892854,R20261021_145345_bench,watchdog_stop,gap=680ms
